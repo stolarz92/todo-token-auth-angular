@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterializeModule } from 'angular2-materialize';
 import { HomeComponent } from './home/home.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
