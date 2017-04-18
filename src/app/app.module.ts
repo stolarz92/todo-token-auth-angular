@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { MaterializeModule } from 'angular2-materialize';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
