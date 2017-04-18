@@ -27,7 +27,7 @@ export class AuthDialogComponent implements OnInit {
     if (e.signedUp) {
       this.closeDialog();
     } else {
-      alert(e.err.json().errors.full_messages[0])
+      alert(e.err.json().errors.full_messages[0]);
     }
   }
 
