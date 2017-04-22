@@ -8,5 +8,6 @@ export const environment = {
   token_auth_config: {
     apiBase: 'http://localhost:3000',
     signInPath: 'auth/login',
+    validateTokenPath: 'auth/validate_token'
   }
 };
