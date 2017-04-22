@@ -14,6 +14,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
+import { TodosComponent } from './todos/todos.component';
+import { TodoFormComponent } from './todos/todo-form/todo-form.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {AuthGuard} from './guards/auth.guard';
     ToolbarComponent,
     AuthDialogComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    TodosComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
