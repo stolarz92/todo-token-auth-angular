@@ -17,6 +17,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   { path: '', pathMatch: 'full', component: TodosComponent },
+  { path: 'todos', pathMatch: 'full', component: TodosComponent },
   { path: 'todos/new', component: TodoFormComponent},
   { path: 'todos/:id', component: TodoFormComponent},
   { path: 'todos/:id/edit', component: TodoFormComponent}

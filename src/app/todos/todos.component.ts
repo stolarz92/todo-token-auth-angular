@@ -7,7 +7,7 @@ import {Todo} from './shared/todo';
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['./todos.component.sass']
 })
 export class TodosComponent implements OnInit {
 
