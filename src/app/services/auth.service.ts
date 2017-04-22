@@ -10,9 +10,9 @@ export class AuthService {
 
   constructor(private authService: Angular2TokenService) {
 
-    this.authService.validateToken().subscribe(
-      res => res.status === 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
-    );
+    // this.authService.validateToken().subscribe(
+    //   res => res.status === 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
+    // );
   }
 
   logOutUser(): Observable<Response> {
@@ -38,6 +38,8 @@ export class AuthService {
 
     return this.authService.signIn(signInData).map(
       res => {
+        console.log(res.json().auth_token);
+        localStorage.setItem('token', res.json().auth_token);
         this.userSignedIn$.next(true);
         return res;
       }

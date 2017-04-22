@@ -6,14 +6,12 @@
   <thead>
   <tr>
     <th data-field="name">Title</th>
-    <th data-field="name">Text</th>
   </tr>
   </thead>
 
   <tbody>
   <tr *ngFor="let q of todos">
     <td>{{ q.title }}</td>
-    <td>{{ q.text }}</td>
 
     <td>
       <a [routerLink]="['/todos', q.id]">

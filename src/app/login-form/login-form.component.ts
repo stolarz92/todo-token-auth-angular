@@ -22,7 +22,9 @@ export class LoginFormComponent implements OnInit {
   onSignInSubmit() {
     this.authService.logInUser(this.signInUser).subscribe(
       res => {
-        if(res.status === 200) {
+        if (res.status === 200) {
+          // console.log(res.json().auth_token);
+          // localStorage.setItem('token', res.json().auth_token);
           this.onFormResult.emit({signedIn: true, res});
         }
       },
