@@ -16,6 +16,8 @@ import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
 import { TodosComponent } from './todos/todos.component';
 import { TodoFormComponent } from './todos/todo-form/todo-form.component';
+import { TodoService } from './todos/shared/todo.service';
+import { routing } from './app-routing.module';
 
 
 @NgModule({
@@ -34,9 +36,10 @@ import { TodoFormComponent } from './todos/todo-form/todo-form.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterializeModule
+    MaterializeModule,
+    routing
   ],
-  providers: [Angular2TokenService, AuthService, AuthGuard],
+  providers: [Angular2TokenService, AuthService, AuthGuard, TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
