@@ -56,7 +56,7 @@ export class TodoFormComponent implements OnInit {
       result = this.todoService.addTodo(this.todo);
     }
 
-    result.subscribe(data => this.router.navigate(['/']));
+    result.subscribe(data => this.router.navigate(['/todos']));
   }
 
 }
