@@ -32,7 +32,7 @@ export class TodoFormComponent implements OnInit {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
 
-      this.title = id ? 'Edit Faq Todo' : 'Create Faq Todo';
+      this.title = id ? 'Edit Todo' : 'Create Todo';
 
       if (!id) {
         return;
@@ -48,9 +48,9 @@ export class TodoFormComponent implements OnInit {
   // Nós chamamos esse método no form quando estamos prontos para criar
   // uma questão ou editar
   save() {
-    var result;
+    let result;
 
-    if (this.todo.id){
+    if (this.todo.id) {
       result = this.todoService.updateTodo(this.todo);
     } else {
       result = this.todoService.addTodo(this.todo);
