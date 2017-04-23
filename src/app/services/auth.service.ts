@@ -1,50 +1,25 @@
 import { Injectable } from '@angular/core';
-import {Angular2TokenService} from 'angular2-token';
-import {Subject, Observable} from 'rxjs';
-import {Response} from '@angular/http';
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/map';
+import { tokenNotExpired } from 'angular2-jwt';
+
 
 @Injectable()
 export class AuthService {
+  constructor(private http: Http) {}
 
-  userSignedIn$: Subject<boolean> = new Subject();
-
-  constructor(private authService: Angular2TokenService) {
-
-    // this.authService.validateToken().subscribe(
-    //   res => res.status === 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
-    // );
+  login(credentials) {
+    console.log(credentials);
+    this.http.post('http://localhost:3000/auth/login', credentials)
+      .map(res => res.json())
+      .subscribe(
+        // We're assuming the response will be an object
+        // with the JWT on an id_token key
+        data => localStorage.setItem('id_token', data.auth_token),
+        error => console.log(error)
+      );
   }
-
-  logOutUser(): Observable<Response> {
-
-    return this.authService.signOut().map(
-      res => {
-        this.userSignedIn$.next(false);
-        return res;
-      }
-    );
+  loggedIn() {
+    return tokenNotExpired();
   }
-
-  registerUser(signUpData:  {email: string, password: string, passwordConfirmation: string}): Observable<Response> {
-    return this.authService.registerAccount(signUpData).map(
-      res => {
-        this.userSignedIn$.next(true);
-        return res;
-      }
-    );
-  }
-
-  logInUser(signInData: {email: string, password: string}): Observable<Response>{
-
-    return this.authService.signIn(signInData).map(
-      res => {
-        console.log(res.json().auth_token);
-        localStorage.setItem('token', res.json().auth_token);
-        this.userSignedIn$.next(true);
-        return res;
-      }
-    );
-
-  }
-
 }

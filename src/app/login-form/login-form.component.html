@@ -1,12 +1,13 @@
-<form (ngSubmit)="onSignInSubmit()" #f="ngForm" >
+<form #f="ngForm"(ngSubmit)="onLogin(f.value)" >
   <div class="row">
     <div class="input-field col s12">
       <input id="email"
-             type="email"
+             type="text"
              required
              name='email'
-             [(ngModel)]="signInUser.email"
-             class="validate">
+             class="validate"
+             ngControl="email"
+      >
       <label for="email">Email</label>
     </div>
     <div class="input-field col s12">
@@ -14,14 +15,13 @@
              type="password"
              required
              name='password'
-             [(ngModel)]="signInUser.password"
-             class="validate">
+             class="validate"
+             ngControl="password"
+      >
       <label for="password">Password</label>
     </div>
     <div class="col s12 ">
       <button type="submit"
-              [disabled]="!(f.valid)"
-              [ngClass]="{'disabled': !(f.valid)}"
               class="waves-effect waves-light btn blue right">
         Login </button>
     </div>

@@ -1,37 +1,25 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
+
+interface Credentials {
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.sass']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent  {
+  credentials: Credentials;
 
-  signInUser = {
-    email: '',
-    password: ''
-  };
+  constructor(private auth: AuthService) {}
 
-  @Output() onFormResult = new EventEmitter<any>();
+  // ngOnInit() {}
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit() {}
-
-  onSignInSubmit() {
-    this.authService.logInUser(this.signInUser).subscribe(
-      res => {
-        if (res.status === 200) {
-          // console.log(res.json().auth_token);
-          // localStorage.setItem('token', res.json().auth_token);
-          this.onFormResult.emit({signedIn: true, res});
-        }
-      },
-      err => {
-        console.log('err:', err);
-        this.onFormResult.emit({signedIn: false, err});
-      }
-    );
+  onLogin(credentials) {
+    console.log(credentials);
+    this.auth.login(credentials);
   }
 }

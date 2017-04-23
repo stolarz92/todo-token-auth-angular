@@ -22,19 +22,19 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit() {}
 
 
-  onSignUpSubmit() {
-
-    this.authService.registerUser(this.signUpUser).subscribe(
-      (res) => {
-        if (res.status === 200) {
-          this.onFormResult.emit({signedUp: true, res});
-        }
-      },
-
-      (err) => {
-        console.log(err.json());
-        this.onFormResult.emit({signedUp: false, err});
-      }
-    );
-  }
+  // onSignUpSubmit() {
+  //
+  //   this.authService.registerUser(this.signUpUser).subscribe(
+  //     (res) => {
+  //       if (res.status === 200) {
+  //         this.onFormResult.emit({signedUp: true, res});
+  //       }
+  //     },
+  //
+  //     (err) => {
+  //       console.log(err.json());
+  //       this.onFormResult.emit({signedUp: false, err});
+  //     }
+  //   );
+  // }
 }
