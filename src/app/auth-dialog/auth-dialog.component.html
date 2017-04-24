@@ -12,10 +12,10 @@
                         *ngIf="isLoginMode()">
 
         </app-login-form>
-        <!--<app-register-form (onFormResult)="onRegisterFormResult($event)"-->
-                           <!--*ngIf="isRegisterMode()">-->
+        <app-register-form (onFormResult)="onRegisterFormResult($event)"
+                           *ngIf="isRegisterMode()">
 
-        <!--</app-register-form>-->
+        </app-register-form>
       </div>
       <div class="row">
         <span class="grey-text text-darken-2" *ngIf="isLoginMode()">

@@ -10,6 +10,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private http: Http, private router: Router) {}
 
+  register(credentials) {
+    return this.http.post('http://localhost:3000/signup', credentials)
+      .toPromise()
+      .then(response => response.json() as String[])
+      .catch(this.handleError);
+  }
   login(credentials) {
    return this.http.post('http://localhost:3000/auth/login', credentials)
       .toPromise()
