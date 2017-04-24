@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import { tokenNotExpired } from 'angular2-jwt';
 
 
@@ -9,17 +10,16 @@ export class AuthService {
   constructor(private http: Http) {}
 
   login(credentials) {
-    console.log(credentials);
-    this.http.post('http://localhost:3000/auth/login', credentials)
-      .map(res => res.json())
-      .subscribe(
-        // We're assuming the response will be an object
-        // with the JWT on an id_token key
-        data => localStorage.setItem('id_token', data.auth_token),
-        error => console.log(error)
-      );
+   return this.http.post('http://localhost:3000/auth/login', credentials)
+      .toPromise()
+      .then(response => response.json() as String[])
+      .catch(this.handleError);
   }
   loggedIn() {
     return tokenNotExpired();
+  }
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 }

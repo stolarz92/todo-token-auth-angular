@@ -1,7 +1,8 @@
-<form #f="ngForm"(ngSubmit)="onLogin(f.value)" >
+<form  (ngSubmit)="onLogin(inputEmail.value, inputPassword.value)" >
   <div class="row">
     <div class="input-field col s12">
       <input id="email"
+            #inputEmail
              type="text"
              required
              name='email'
@@ -12,6 +13,7 @@
     </div>
     <div class="input-field col s12">
       <input id="password"
+             #inputPassword
              type="password"
              required
              name='password'

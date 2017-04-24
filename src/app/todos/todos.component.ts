@@ -19,6 +19,8 @@ export class TodosComponent implements OnInit {
   ngOnInit() {
     this.todoService.getTodos()
       .subscribe(data => this.todos = data);
+    var token = localStorage.getItem('id_token');
+    console.log('zapisany token:', token);
   }
 
   // Apaga a questão

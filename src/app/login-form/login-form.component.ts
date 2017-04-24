@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 
 interface Credentials {
@@ -11,15 +11,25 @@ interface Credentials {
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.sass']
 })
-export class LoginFormComponent  {
-  credentials: Credentials;
+export class LoginFormComponent {
+  @Output() onFormResult:EventEmitter<any> = new EventEmitter();
 
-  constructor(private auth: AuthService) {}
+  credentials:Credentials;
 
-  // ngOnInit() {}
-
-  onLogin(credentials) {
-    console.log(credentials);
-    this.auth.login(credentials);
+  constructor(private auth:AuthService) {
   }
+
+  ngOnInit() {
+  }
+
+  onLogin(email:string, password:string) {
+    var newCredentials:Credentials = {email: email, password: password};
+    console.log(newCredentials);
+    this.auth.login(newCredentials).then(resp => {
+      localStorage.setItem('id_token', resp['auth_token']);
+
+    });
+    this.onFormResult.emit({signedIn: true});
+  }
+
 }
