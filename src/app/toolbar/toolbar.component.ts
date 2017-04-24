@@ -21,4 +21,6 @@ export class ToolbarComponent implements OnInit {
     this.authDialog.openDialog(mode);
   }
 
+
+
 }

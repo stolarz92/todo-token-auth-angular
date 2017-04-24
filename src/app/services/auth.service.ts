@@ -16,10 +16,14 @@ export class AuthService {
       .catch(this.handleError);
   }
   loggedIn() {
-    return tokenNotExpired();
+    console.log(tokenNotExpired('id_token'));
+    return tokenNotExpired('id_token');
   }
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
+  }
+  logOut() {
+    localStorage.removeItem('id_token');
   }
 }
