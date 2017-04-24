@@ -3,11 +3,12 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class AuthService {
-  constructor(private http: Http) {}
+  constructor(private http: Http, private router: Router) {}
 
   login(credentials) {
    return this.http.post('http://localhost:3000/auth/login', credentials)
@@ -25,5 +26,6 @@ export class AuthService {
   }
   logOut() {
     localStorage.removeItem('id_token');
+    this.router.navigate(['/']);
   }
 }
