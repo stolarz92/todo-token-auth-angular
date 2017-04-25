@@ -6,19 +6,21 @@
   <thead>
   <tr>
     <th data-field="name">Title</th>
+    <th data-field="name">Done</th>
+    <th data-field="name">Actions</th>
   </tr>
   </thead>
 
   <tbody>
   <tr *ngFor="let t of todos">
     <td>{{ t.title }}</td>
+    <td>{{ t.done }}</td>
 
     <td>
       <a [routerLink]="['/todos', t.id]">
         Edit
       </a>
-    </td>
-    <td>
+      |
       <a (click)="deleteTodo(t)" href="">
         Delete
       </a>
