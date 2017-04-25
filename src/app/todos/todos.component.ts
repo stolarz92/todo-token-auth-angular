@@ -20,12 +20,11 @@ export class TodosComponent implements OnInit {
     this.todoService.getTodos()
       .subscribe(data => this.todos = data);
     var token = localStorage.getItem('id_token');
-    console.log('zapisany token:', token);
   }
 
   // Apaga a questão
   deleteTodo(todos) {
-    if (confirm('Você tem certeza que quer deletar a todos ' + todos.title + '?')) {
+    if (confirm('Really want to delete ' + todos.title + '?')) {
       var index = this.todos.indexOf(todos);
       this.todos.splice(index, 1);
 

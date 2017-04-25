@@ -14,8 +14,6 @@ export class TodoService {
   private token: string = localStorage.getItem('id_token');
   constructor(private http: Http) { }
 
-
-
   // Pega as todos na API
   setHeaders() {
     let headers = new Headers({'Content-Type': 'application/json'});
@@ -23,6 +21,7 @@ export class TodoService {
     let options = new RequestOptions({headers: headers});
     return options
   }
+
   getTodos() {
     var options = this.setHeaders();
     return this.http.get(this.url, options)
