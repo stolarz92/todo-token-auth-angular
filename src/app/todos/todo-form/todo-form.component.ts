@@ -16,6 +16,8 @@ export class TodoFormComponent implements OnInit {
 
   // Cria uma variável string para falarmos se é uma edição ou criação de Todo
   title: string;
+  description: string;
+  done: boolean;
   // Pega nosso Model e coloca na variável todo
   todo: Todo = new Todo();
 
