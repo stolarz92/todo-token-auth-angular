@@ -49,6 +49,12 @@ export class TodoService {
       .map(res => res.json());
   }
 
+  changeTodoStatus(id) {
+    var options = this.setHeaders();
+    return this.http.post(this.url + '/' + id + '/change_todo_status', options)
+    .map(res => res.json());
+  }
+
   // Apaga uma todo no servidor
   deleteTodo(id) {
     var options = this.setHeaders();

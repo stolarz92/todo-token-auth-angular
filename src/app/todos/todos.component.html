@@ -16,14 +16,16 @@
   <tr *ngFor="let t of todos">
     <td>{{ t.title }}</td>
     <td>{{ t.description }}</td>
-    <td>{{ t.done }}</td>
-
+    <td>
+      <script>{{ console.log(t)}}</script>
+      <a *ngIf="!t.done" (click)="changeTodoStatus(t)" href="/todos">Done</a>
+      <a *ngIf="t.done" (click)="changeTodoStatus(t)" href="/todos">Undone</a>
     <td>
       <a [routerLink]="['/todos', t.id]">
         Edit
       </a>
       |
-      <a (click)="deleteTodo(t)" href="">
+      <a (click)="deleteTodo(t)" href="/todos">
         Delete
       </a>
     </td>

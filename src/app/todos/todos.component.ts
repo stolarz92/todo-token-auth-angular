@@ -33,4 +33,11 @@ export class TodosComponent implements OnInit {
     }
   }
 
+  changeTodoStatus(todos) {
+    // console.log(todos);
+    var index = this.todos.indexOf(todos);
+    this.todos.splice(index, 1);
+    this.todoService.changeTodoStatus(todos.id)
+      .subscribe(null);
+  }
 }
